@@ -23,11 +23,11 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      function draw() {
      }
      ```
-   - create a p5 canvas the same size as the browser window
+   - in setup() create a p5 canvas the same size as the browser window
      ```
      canvas = createCanvas(windowWidth, windowHeight);
      ```
-   - tie the canvas to canvasContainer html node
+   - then tie the canvas to canvasContainer html node
        ```
        canvas.parent("canvasContainer");
        ```
