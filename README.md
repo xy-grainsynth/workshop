@@ -11,7 +11,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 <img src="https://github.com/xy-grainsynth/xy-prototype/assets/115570643/34b7190e-8a4f-4ede-9a6f-cfd78e3b5bac"  width="200" height="200">
 
 ## Practical session: creating a mini web synth
-1. index.html, loading p5 library [Step 1](https://github.com/xy-grainsynth/xy-prototype/tree/d4e836bfcaada67980dc523e0724686a8003cfb3/js)
+1. create index.html, load p5 and tweakpane library, add css stylesheet, test in VS studio code [Step 1](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)
 2. p5 framework and web audio
    - p5 sketch stub and web audio context definition
 3. defining/setting gain, connecting to master output
