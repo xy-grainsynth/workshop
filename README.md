@@ -27,7 +27,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      ```
      canvas = createCanvas(windowWidth, windowHeight);
      ```
-     - tie the canvas to canvasContainer html node
+   - tie the canvas to canvasContainer html node
        ```
        canvas.parent("canvasContainer");
        ```
