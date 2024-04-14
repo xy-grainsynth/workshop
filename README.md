@@ -27,7 +27,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      ```
      canvas = createCanvas(windowWidth, windowHeight);
      ```
-   - then tie the canvas to canvasContainer html node
+   - in setup() tie the canvas to canvasContainer html node
        ```
        canvas.parent("canvasContainer");
        ```
