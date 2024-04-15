@@ -21,6 +21,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      }
 
      function draw() {
+     
      }
      ```
    3. in setup() create a p5 canvas the same size as the browser window
@@ -31,7 +32,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      ```
      canvas.parent("canvasContainer");
      ```
-   6. declare audio context at the top of the main script
+   5. declare audio context at the top of the main script
      ```
      var ctx, master;
      ctx = new (window.AudioContext || window.webkitAudioContext);
@@ -48,15 +49,14 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
         }
      }
      ```
-   - p5 sketch stub and web audio context definition
-5. defining/setting gain, connecting to master output
-6. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
-7. sounds laden/defining and loading buffers
-8. connection between web audio und canvas
-9. grains generator: how are the granulator work
+3. defining/setting gain, connecting to master output
+4. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
+5. sounds laden/defining and loading buffers
+6. connection between web audio und canvas
+7. grains generator: how are the granulator work
    - example stub
    - continue adding one effect and exposing the value to test it 
-10. setting up a GUI to control the web audio context and expose the granular synth parameters
+8. setting up a GUI to control the web audio context and expose the granular synth parameters
    - tweakpane library
    - grain param monitors
-11. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
+9. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
