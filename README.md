@@ -85,7 +85,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    4. test using the GUI and the console  
 6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
-   2. in gui.js add start/stop button
+   2. in gui.js add tweakpane button to suspend and resume the web audio context
 7. grains generator: how are the granulator work
    - example stub
    - continue adding one effect and exposing the value to test it 
