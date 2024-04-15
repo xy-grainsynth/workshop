@@ -115,7 +115,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    ```
    5. define the grain envelope and start and stop grain
    ```
-   this.grain.start(ctx.currentTime, Math.max(0.0, this.offset + this.randomoffset)); //parameters (when,offset,duration)
+   this.grain.start(ctx.currentTime, Math.max(0.0, this.offset + this.randomoffset));
    this.contour.gain.setValueAtTime(0.0, ctx.currentTime);
    this.contour.gain.linearRampToValueAtTime(this.amp, ctx.currentTime + attack);
    this.contour.gain.linearRampToValueAtTime(0.0, ctx.currentTime + (attack + release));
@@ -126,7 +126,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    8. amplitude is based on x mouse position
    9. garbage collection: dispose of panner node and gain contour
    10. add feedback delay effect to the grain
-8. setting up a GUI to control the web audio context and expose the granular synth parameters
+8. enhance the GUI to control the granular synth parameters
    - tweakpane library
    - grain param monitors
 9. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
