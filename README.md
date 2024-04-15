@@ -59,7 +59,8 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 6. load recording into audio buffer
    1. define audiobuffer in main.js
    2. write bufferswitch() buffer loading function in gui.js
-   3. test using the console  
+   3. call bufferswitch in setup() to initialize audiobuffer upon start up
+   4. test using the console  
 7. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
    2. in gui.js add start/stop button
