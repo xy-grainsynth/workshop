@@ -24,6 +24,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      
      }
      ```
+     setup() is called to initialize the p5 sketch, draw() is called at every frame
    3. in setup() create a p5 canvas the same size as the browser window
      ```
      canvas = createCanvas(windowWidth, windowHeight);
@@ -86,8 +87,9 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
    2. in gui.js add tweakpane button to suspend and resume the web audio context
-7. grains generator: how are the granulator work
-   - example stub
+7. grains generator
+   1. grains are generated at every frame when the mouse is pressed
+   2. 
    - continue adding one effect and exposing the value to test it 
 8. setting up a GUI to control the web audio context and expose the granular synth parameters
    - tweakpane library
