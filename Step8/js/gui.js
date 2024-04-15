@@ -114,7 +114,7 @@ const PARAMS = {
     fb = parseFloat(ev.value.toFixed(1));
   });
   
-  const pInput = effects.addInput(PARAMS, 'pitch', { min: 0.01, max: 10, step: 0.01 });
+  const pInput = effects.addInput(PARAMS, 'pitch', { min: 0.01, max: 5, step: 0.01 });
   pInput.on('change', function (ev) {
     transpose = parseFloat(ev.value.toFixed(2));
   });
@@ -127,7 +127,7 @@ const PARAMS = {
   });
   
   
-  pane.addMonitor(PARAMS, 'density', { view: 'graph', min: 1, max: 100 });
+  pane.addMonitor(PARAMS, 'density', { view: 'graph', min: 0, max: 1 });
   pane.addMonitor(PARAMS, 'attack', { view: 'graph', min: 0.01, max: 1.0 });
   pane.addMonitor(PARAMS, 'decay', { view: 'graph', min: 0.01, max: 1.0 });
   
