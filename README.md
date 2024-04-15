@@ -107,13 +107,14 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    4. generate grains at where the mouse is at position x,y
    ```
    function graingenerator(positionX, positionY){
-   this.grain = ctx.createBufferSource();
-   this.grain.buffer = audioBuffer;
-   this.contour = ctx.createGain();
-   this.contour.connect(master);
+      this.grain = ctx.createBufferSource();
+      this.grain.buffer = audioBuffer;
+      this.contour = ctx.createGain();
+      this.contour.connect(master);
+      
    }
    ```
-   5. define the grain envelope and start and stop grain
+   5. define the grain envelope and start and stop grain in graingenerator(positionX, positionY)
    ```
    this.grain.start(ctx.currentTime, Math.max(0.0, this.offset + this.randomoffset));
    this.contour.gain.setValueAtTime(0.0, ctx.currentTime);
