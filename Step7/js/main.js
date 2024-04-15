@@ -20,8 +20,8 @@ var delay = parseFloat(PARAMS.delay.toFixed(1));
 var feedback = parseFloat(PARAMS.feedback.toFixed(1));
 var density = parseFloat(PARAMS.density.toFixed(2));
 var transpose = parseFloat(PARAMS.pitch.toFixed(2));
-
 */
+
 
 //declare audio context
 var ctx, master;
@@ -36,6 +36,9 @@ var release = 0.40;
 var density = 1;
 var transpose = 1.0;
 var spread = 0.2;
+
+var feedback = 0.1;
+var delay = 0.1;
 
 
 
@@ -154,7 +157,7 @@ voice.prototype.playmouse = function () {
     var that = this; //for scope issues	
     this.play = function () {
         //create new grain
-        var g = new playgrain(mouseX, mouseY);
+        var g = new graingenerator(mouseX, mouseY);
         //push to the array
         that.grains[that.graincount] = g;
         that.graincount += 1;
@@ -185,7 +188,7 @@ voice.prototype.stop = function () {
 
 
 //the grain class
-function playgrain(positionx, positiony) {
+function graingenerator(positionx, positiony) {
 
     var that = this; //for scope issues
     var now = ctx.currentTime; //update the time value
@@ -195,25 +198,35 @@ function playgrain(positionx, positiony) {
     //create the gain for enveloping
     this.contour = ctx.createGain();
 
-    /*
+    
     //experimenting with adding a panner node - not all the grains will be panned for better performance
     var yes = parseInt(rand(3),10);
     if( yes === 1){
-        this.panner = context.createPanner();
+        this.panner = ctx.createPanner();
         this.panner.panningModel = "equalpower";
         this.panner.distanceModel = "linear";
         this.panner.setPosition(p.random(pan * -1,pan),0,0);
         //connections
-        this.source.connect(this.panner);
-        this.panner.connect(this.gain);
+        this.grain.connect(this.panner);
+        this.panner.connect(this.contour);
     }else{
-        this.source.connect(this.gain);
+        this.grain.connect(this.contour);
     }
-    */
+    
+    // add a feedback delay to the grain
+    this.delay = ctx.createDelay();
+    this.delay.delayTime.value = delay;
+
+    this.feedback = ctx.createGain();
+    this.feedback.gain.value = feedback;
+
+    this.delay.connect(this.feedback);
+    this.feedback.connect(this.delay);
+    this.grain.connect(this.delay);
 
     this.contour.connect(master);
 
-    this.grain.connect(this.contour);
+  //  this.grain.connect(this.contour);
 
     //update the position and calcuate the offset
     var len = this.grain.buffer.duration;
@@ -246,11 +259,11 @@ function playgrain(positionx, positiony) {
     var tms = (attack + release) * 1000; //calculate the time in miliseconds
     setTimeout(function () {
         that.contour.disconnect();
-        /*
+        
         if (yes === 1) {
             that.panner.disconnect();
         }
-        */
+        
     }, tms + 200);
 
 }

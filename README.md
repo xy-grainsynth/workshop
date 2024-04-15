@@ -88,8 +88,23 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    1. in main.js suspend audio context after initialization
    2. in gui.js add tweakpane button to suspend and resume the web audio context
 7. grains generator
-   1. grains are generated at every frame when the mouse is pressed
-   2. 
+   1. grains are generated when the mouse is pressed
+   ```
+   function mousePressed(){
+      ... // start generating grains
+   }
+   ```
+   2. dispose of the generated grains when the mouse is released
+   ```
+   function mouseReleased(){
+      ... // delete the grains generated sind the mouse got pressed
+   }
+   ```
+   3. array to hold the generated grains
+   ```
+   var voice = [];
+   ```
+   
    - continue adding one effect and exposing the value to test it 
 8. setting up a GUI to control the web audio context and expose the granular synth parameters
    - tweakpane library
