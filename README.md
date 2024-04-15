@@ -49,8 +49,10 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
         }
      }
      ```
-4. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
-5. sounds laden/defining and loading buffers
+3. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
+4. setup a tweakpane GUI to load the recordings into the script
+     1. create js/gui.js
+     2. 
 6. connection between web audio und canvas
 7. grains generator: how are the granulator work
    - example stub
