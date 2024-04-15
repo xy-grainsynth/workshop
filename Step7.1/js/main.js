@@ -4,8 +4,7 @@ var audioBuffer;
 var posX, posY;
 var h, w;
 
-var voices = []; //an array for touch events - polyphonic
-var voicesmono = []; //this will be used for mouse events - monophonic
+var voicesmono = []; //this will be used for mouse events
 
 var bg = [];
 var dots = []

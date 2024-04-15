@@ -3,7 +3,7 @@ var ctx;
 // declare master volume
 var master;
 //audio buffer containing the currently selected recording
-var audiobuffer;
+var audioBuffer;
 
 
 var posX, posY;
@@ -16,7 +16,8 @@ master = ctx.createGain();
 // connect to output
 master.connect(ctx.destination);
 
-
+    // initialize audio buffer
+    bufferSwitch(0);
 
 
 function setup() {
@@ -26,8 +27,7 @@ function setup() {
     // tie the canvas to canvasContainer html node
     canvas.parent("canvasContainer");
 
-    // initialize audio buffer
-    bufferSwitch(0);
+
 }
 
 
