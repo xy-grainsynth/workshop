@@ -13,8 +13,8 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 ## Practical session: creating a mini web synth
 1. create index.html, load p5 and tweakpane library, add css stylesheet, test in VS studio code, check for errors using the console output [Step 1](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)
 2. p5 framework and web audio
-   - create js/Step2/main.js file in VS Studio Code
-   - in main.js create p5 sketch with setup() and draw()
+   1. create js/Step2/main.js file in VS Studio Code
+   1. in main.js create p5 sketch with setup() and draw()
      ```
      function setup() {
 
@@ -23,14 +23,20 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      function draw() {
      }
      ```
-   - in setup() create a p5 canvas the same size as the browser window
+   1. in setup() create a p5 canvas the same size as the browser window
      ```
      canvas = createCanvas(windowWidth, windowHeight);
      ```
-   - in setup() tie the canvas to canvasContainer html node
+   1. in setup() tie the canvas to canvasContainer html node
        ```
        canvas.parent("canvasContainer");
        ```
+   1. declare audio context at the top of the main script
+      ```
+      ctx = new (window.AudioContext || window.webkitAudioContext);
+      master = ctx.createGain();
+      master.connect(ctx.destination);
+      ```
    - p5 sketch stub and web audio context definition
 4. defining/setting gain, connecting to master output
 5. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
