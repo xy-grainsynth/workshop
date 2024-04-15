@@ -92,7 +92,18 @@ const PARAMS = {
     expanded: true
   });
   
-
+  
+  const delInput = effects.addInput(PARAMS, 'delay', { min: 0.0, max: 0.9, step: 0.1 });
+  delInput.on('change', function (ev) {
+    delay = parseFloat(ev.value.toFixed(1));
+  });
+  
+  
+  const fbInput = effects.addInput(PARAMS, 'feedback', { min: 0.0, max: 0.9, step: 0.1 });
+  fbInput.on('change', function (ev) {
+    feedback = parseFloat(ev.value.toFixed(1));
+  });
+  
   const pInput = effects.addInput(PARAMS, 'pitch', { min: 0.01, max: 5, step: 0.01 });
   pInput.on('change', function (ev) {
     transpose = parseFloat(ev.value.toFixed(2));

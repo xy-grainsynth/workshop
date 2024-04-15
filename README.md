@@ -50,7 +50,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
         }
      }
      ```
-3. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
+3. sourcing own recordings .wav format max. duration up to 2 minutes (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
    1. save at least two recordings in the folder recordings in the project directory
 4. setup a tweakpane GUI to load the recordings into the script
    1. create js/gui.js
@@ -82,12 +82,48 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      getSound.send(); // send buffer response
    }
    ```
-   3. call bufferswitch in setup() in main.js to initialize audiobuffer upon start up
+   3. call bufferswitch after web audio context initialization in main.js to initialize audiobuffer upon start up
    4. test using the GUI and the console  
 6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
    2. in gui.js add tweakpane button to suspend and resume the web audio context
-7. grains generator
+7. grain generator
+   1. grains are generated when the mouse is pressed on the canvas
+   ```
+   function draw(){
+      ...
+      graingenerator(posX, posY);
+      ...
+   }
+
+   function graingenerator(positionx, positiony){
+      ... // here comes the grain generation
+   }
+   
+   ```
+  2. generate grains at mouse position x,y
+   ```
+   function graingenerator(positionX, positionY){
+      this.grain = ctx.createBufferSource();
+      this.grain.buffer = audioBuffer;
+      this.contour = ctx.createGain();
+      this.contour.connect(master);
+      
+   }
+   ```
+   3. define the grain envelope and start and stop grain in graingenerator(positionX, positionY)
+   ```
+   this.grain.start(ctx.currentTime, Math.max(0.0, this.offset + this.randomoffset));
+   this.contour.gain.setValueAtTime(0.0, ctx.currentTime);
+   this.contour.gain.linearRampToValueAtTime(this.amp, ctx.currentTime + attack);
+   this.contour.gain.linearRampToValueAtTime(0.0, ctx.currentTime + (attack + release));
+   this.grain.stop(ctx.currentTime + attack + release + 0.1);
+   ```
+   4. the offset is obtained from x mouse position, random offset is obtained based on spread
+   5. amplitude is based on y mouse position
+   6. garbage collection: dispose of gain envelope
+   7. add the grain synth params in the GUI to make them adjustible
+8. add density
    1. grains are generated when the mouse is pressed
    ```
    function mousePressed(){
@@ -104,30 +140,9 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    ```
    var voice = [];
    ```
-   4. generate grains at where the mouse is at position x,y
-   ```
-   function graingenerator(positionX, positionY){
-      this.grain = ctx.createBufferSource();
-      this.grain.buffer = audioBuffer;
-      this.contour = ctx.createGain();
-      this.contour.connect(master);
-      
-   }
-   ```
-   5. define the grain envelope and start and stop grain in graingenerator(positionX, positionY)
-   ```
-   this.grain.start(ctx.currentTime, Math.max(0.0, this.offset + this.randomoffset));
-   this.contour.gain.setValueAtTime(0.0, ctx.currentTime);
-   this.contour.gain.linearRampToValueAtTime(this.amp, ctx.currentTime + attack);
-   this.contour.gain.linearRampToValueAtTime(0.0, ctx.currentTime + (attack + release));
-   this.grain.stop(ctx.currentTime + attack + release + 0.1);
-   ```
-   6. the offset is obtained from x mouse position, random offset is obtained based on spread
-   7. add panner node
-   8. amplitude is based on y mouse position
-   9. garbage collection: dispose of panner node and the gain envelope
-   10. add feedback delay effect to the grain
-8. enhance the GUI to control the granular synth parameters
-   - tweakpane library
+ 
+ 9. add feedback delay effect to the grain
+
+10. enhance the GUI to control the granular synth parameters
    - grain param monitors
-9. test/play with the built synth, and define a sound that associates with a climate condition using the GUI, defining associations with climate scenarios
+11. test/play with the built synth, and define a sound that associates with a climate condition using the GUI, defining associations with climate scenarios

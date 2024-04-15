@@ -11,35 +11,22 @@ var bg = [];
 var dots = []
 var points = [];
 
-/*
+
 var attack = parseFloat(PARAMS.attack.toFixed(2));
-var release = parseFloat(PARAMS.decay.toFixed(2));
-var sustain = parseFloat(PARAMS.sustain.toFixed(2));
+var release = parseFloat(PARAMS.release.toFixed(2));
 var spread = parseFloat(PARAMS.spread.toFixed(2));
+var transpose = parseFloat(PARAMS.pitch.toFixed(2));
 var delay = parseFloat(PARAMS.delay.toFixed(1));
 var feedback = parseFloat(PARAMS.feedback.toFixed(1));
 var density = parseFloat(PARAMS.density.toFixed(2));
-var transpose = parseFloat(PARAMS.pitch.toFixed(2));
-*/
+
+
 
 
 //declare audio context
 var ctx, master;
 // declare master volume
 //var master;
-
-
-
-//initial grain params
-var attack = 0.40;
-var release = 0.40;
-var density = 1;
-var transpose = 1.0;
-var spread = 0.2;
-
-var feedback = 0.1;
-var delay = 0.1;
-
 
 
 
@@ -53,19 +40,11 @@ window.onload = function () {
 
     //web audio setup
     ctx = new (window.AudioContext || window.webkitAudioContext);
-
     //master volume
     master = ctx.createGain();
     master.connect(ctx.destination);
-
-
-
     //load buffer with page
     bufferSwitch(0);
-
-
-
-
 }
 
 /*
@@ -101,14 +80,30 @@ function draw() {
     //limit drawing and sound generation to within canvas
     if (posX > 0 && posX < windowWidth && posY > 0 && posY < windowHeight) {
         if (mouseIsPressed) {
+            //graingenerator_main(posX,posY);
 
-             console.log("mouse is pressed");
-            //  voicesmono[0].playmouse();
-            //    var g = playgrain(posX, mouseY);
+            if (voicesmono.length == 0) {
+                console.log("create a new voice");
+                var v = new voice_main();
+                v.playmouse();
+                voicesmono[0] = v;
+            }
 
+        } else {
+            for (var i = 0; i < voicesmono.length; i++) {
+                console.log("Stop voice");
+                voicesmono[i].stop();
+                voicesmono.splice(i);
+            }
         }
+    }
 
-
+    else {
+        for (var i = 0; i < voicesmono.length; i++) {
+            console.log("Stop voice");
+            voicesmono[i].stop();
+            voicesmono.splice(i);
+        }
     }
 
     stroke(0);
@@ -121,69 +116,105 @@ function draw() {
 }
 
 
-function mousePressed() {
-    // mouseState = true;
-    console.log("create a new voice");
-        var v = new voice();
-        v.playmouse();
-        voicesmono[0] = v;
-        console.log(voicesmono);
-    
+
+//the grain class
+function graingenerator_main(positionx, positiony) {
+
+    console.log("in grain generator");
+
+    var grain = ctx.createBufferSource();
+    grain.buffer = audioBuffer;
+    //create the gain for enveloping
+    var contour = ctx.createGain();
+
+    // add a feedback delay to the grain
+    var del  = ctx.createDelay();
+    del.delayTime.value = delay;
+
+    var feedb = ctx.createGain();
+    feedb.gain.value = feedback;
+
+    del.connect(feedb);
+    feedb.connect(del);
+    contour.connect(feedb);
+    grain.connect(feedb);
+
+    contour.connect(master);
+
+    grain.connect(contour);
+
+    //update the position and calcuate the offset
+    var len = grain.buffer.duration;
+    var offset = len * (positionx / windowWidth); //pixels to seconds
+
+    //update and calculate the amplitude
+    amp = positiony / windowHeight;
+    amp = map(amp, 0.0, 1.0, 1.0, 0.0);
+
+    grain.playbackRate.value = grain.playbackRate.value * transpose;
+
+    randomoffset = (Math.random() * spread) - (spread / 2); //in seconds
+
+    grain.start(ctx.currentTime, Math.max(0.0, offset + randomoffset));
+    contour.gain.setValueAtTime(0.0, ctx.currentTime);
+    contour.gain.linearRampToValueAtTime(amp, ctx.currentTime + attack);
+    contour.gain.linearRampToValueAtTime(0.0, ctx.currentTime + (attack + release));
+    grain.stop(ctx.currentTime + attack + release + 0.1);
+
+
+    var tms = (attack + release) * 1000; //calculate the time in miliseconds
+    setTimeout(function () {
+        contour.disconnect();
+    }, tms + 200);
+
 }
 
 
-
-function mouseReleased() {
-    mouseIsPressed = false;
-    console.log("Stop voice");
-    console.log(voicesmono[0]);
-    for (var i = 0; i < voicesmono.length; i++) {
-        voicesmono[i].stop();
-        voicesmono.splice(i);
+function voice_main(id) {
+    this.touchid = id;
+    this.grains = [];
+    var that = this;
+    this.playmouse = function () {
+        this.play = function () {
+            graingenerator_main(mouseX, mouseY);
+            this.dens = map(density, 1, 0, 0, 1);
+            this.interval = (this.dens * 500) + 30;
+            that.timeout = setTimeout(that.play, this.interval);
+        }
+        this.play();
+    }
+    this.stop = function () {
+        clearTimeout(this.timeout);
     }
 }
 
 
-function voice(id) {
 
+
+
+function voice(id) {
     this.touchid = id;
 }
-
-
 //play function for mouse event
 voice.prototype.playmouse = function () {
     this.grains = [];
-    this.graincount = 0;
     var that = this; //for scope issues	
     this.play = function () {
         //create new grain
         var g = new graingenerator(mouseX, mouseY);
         //push to the array
         that.grains[that.graincount] = g;
-        that.graincount += 1;
-        /*
-                if (that.graincount > 20) {
-                    that.graincount = 0;
-                }
-                */
-        //next interval
         this.dens = map(density, 1, 0, 0, 1);
         this.interval = (this.dens * 500) + 30;
-        console.log("dens: "+ this.dens + " interval: " + this.interval);
+        console.log("dens: " + this.dens + " interval: " + this.interval);
         that.timeout = setTimeout(that.play, this.interval);
-        
-
     }
     this.play();
 }
-
-
 //stop method
 voice.prototype.stop = function () {
     clearTimeout(this.timeout);
 }
-
-
 
 
 
@@ -198,22 +229,26 @@ function graingenerator(positionx, positiony) {
     //create the gain for enveloping
     this.contour = ctx.createGain();
 
-    
+    var pan = 0.1;
     //experimenting with adding a panner node - not all the grains will be panned for better performance
-    var yes = parseInt(rand(3),10);
-    if( yes === 1){
+    var yes = parseInt(rand(3), 10);
+    if (yes === 1) {
         this.panner = ctx.createPanner();
         this.panner.panningModel = "equalpower";
         this.panner.distanceModel = "linear";
-        this.panner.setPosition(p.random(pan * -1,pan),0,0);
+        this.panner.setPosition(Math.random(pan * -1, pan), 0, 0);
         //connections
         this.grain.connect(this.panner);
         this.panner.connect(this.contour);
-    }else{
+    }
+    /* 
+    else {
         this.grain.connect(this.contour);
     }
-    
-    
+    */
+
+
+
     // add a feedback delay to the grain
     this.delay = ctx.createDelay();
     this.delay.delayTime.value = delay;
@@ -223,11 +258,11 @@ function graingenerator(positionx, positiony) {
 
     this.delay.connect(this.feedback);
     this.feedback.connect(this.delay);
-    this.grain.connect(this.delay);
+    this.contour.connect(this.feedback);
+    this.grain.connect(this.feedback);
 
+    this.grain.connect(this.contour);
     this.contour.connect(master);
-
-  //  this.grain.connect(this.contour);
 
     //update the position and calcuate the offset
     var len = this.grain.buffer.duration;
@@ -237,11 +272,10 @@ function graingenerator(positionx, positiony) {
     //update and calculate the amplitude
     this.positiony = positiony;
     this.amp = this.positiony / windowHeight;
-    this.amp = map(this.amp, 0.0, 1.0, 1.0, 0.0) ;
+    this.amp = map(this.amp, 0.0, 1.0, 1.0, 0.0);
 
     this.grain.playbackRate.value = this.grain.playbackRate.value * transpose;
-   //this.grain.playbackRate.value = transpose;
-  
+
     this.spread = spread;
 
     this.randomoffset = (Math.random() * this.spread) - (this.spread / 2); //in seconds
@@ -257,111 +291,18 @@ function graingenerator(positionx, positiony) {
 
     //garbage collection
     this.grain.stop(ctx.currentTime + attack + release + 0.1);
-    
+
     var tms = (attack + release) * 1000; //calculate the time in miliseconds
     setTimeout(function () {
         that.contour.disconnect();
-        
+
         if (yes === 1) {
             that.panner.disconnect();
         }
-        
+
     }, tms + 200);
 
 }
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-
-function grains(pos, pitch) {
-
-    var grain = ctx.createBufferSource();
-    var contour = ctx.createGain();
-    var verbLevel = ctx.createGain();
-    var len, factor, position, randFactor;
-
-
-    const delay = ctx.createDelay();
-    delay.delayTime.value = del;
-
-    const feedback = ctx.createGain();
-    feedback.gain.value = fb;
-
-    console.log("grains: att " + att + " dec " + dec + " density " + density + " delay " + del + " fb " + fb + " pitch " + pitch);
-
-    contour.gain.setValueAtTime(0, ctx.currentTime);
-    contour.gain.linearRampToValueAtTime(0.5 * rand(0.2, 1), ctx.currentTime + att + sust); // volume ramp is a bit randomized 
-    contour.gain.linearRampToValueAtTime(0, ctx.currentTime + (att + + sust + dec) + 0.1);
-    //contour.gain.linearRampToValueAtTime(0.6 * rand(0.5, 1), ctx.currentTime + grain_x_mapped);
-    //contour.gain.linearRampToValueAtTime(0, ctx.currentTime + (grain_x_mapped + grain_y_mapped));
-
-    delay.connect(feedback);
-    feedback.connect(delay);
-    // delay.connect(master);
-
-    contour.connect(delay);
-    // contour.connect(verbLevel);
-    contour.connect(master);
-    //   delay.connect(master);
-
-    //verbLevel.gain.setValueAtTime(0.6, ctx.currentTime);
-    //verbLevel.connect(master);
-
-    var gRate = pitch;
-    //  var gRate = (2.5 * (0.8 - (pitch / windowHeight))) + 0.5;
-    //  console.log("gRate " + gRate + " pitch "+ pitch);
-    //console.log("posY "+posY + " - pitch/wh "+ pitch/windowHeight + " - reverse pitch val "+0.8 - (pitch/windowHeight) + " -grate " + gRate);
-
-    grain.buffer = audioBuffer;
-    len = grain.buffer.duration;
-    factor = pos;
-    position = windowWidth;
-    //spread
-    randFactor = spread; // smaller randFactor makes larger density, larger randFactor makes density smaller and the sounds more recognizable, its the grain length, spread
-
-    //grainsize = map(pos, 0, windowWidth, 0.01, 1.00);
-    //  if(usepitch){
-    grain.playbackRate.value = gRate;
-    /* 
-     if (gRate < 1) {
-         grain.playbackRate.value = 0.5;
-     } else {
-         grain.playbackRate.value = gRate;
-     }
-     */
-
-    grain.connect(contour);
-
-    playtime = att + sust + dec;
-    randval = rand(0, spread);
-    startPos = (len * (pos / position)) + randval;
-    //   console.log(startPos);
-    // grain start point = buf len * mouse position / x dimension + rand
-    //grain.start(ctx.currentTime, (len * factor / position) + rand(0, randFactor));
-    grain.start(ctx.currentTime, startPos);
-    //console.log("len "+len + " - start  "+ startPos + " - randval " + randval +  " - playtime "+playtime);
-
-    //stop old grains
-    grain.stop(ctx.currentTime + playtime + 0.1);
-
-    const disconnectTime = (att + sust + dec) * 1000;
-
-    setTimeout(() => {
-        contour.disconnect();
-    }, disconnectTime + 200);
-
-
-}
-
-
-
-
-
-
-
-
-
 
 
 

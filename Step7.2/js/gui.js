@@ -3,10 +3,8 @@ const PARAMS = {
     attack: 0.3, //in seconds
     release: 0.3, //in seconds
     density: 0.8,
-    delay: 0.1,
-    feedback: 0.1,
     spread: 0.5,
-    pitch: 1,
+    pitch: 1.0
   };
   
   
@@ -64,10 +62,12 @@ const PARAMS = {
   
   
   
+  
   const attInput = area.addInput(PARAMS, 'attack', { min: 0.01, max: 1.0, step: 0.01 });
   attInput.on('change', function (ev) {
     attack = parseFloat(ev.value.toFixed(2));
- });
+    console.log(" att in gui " + att);
+  });
   
   const decInput = area.addInput(PARAMS, 'release', { min: 0.01, max: 1.0, step: 0.01 });
   decInput.on('change', function (ev) {
@@ -75,16 +75,11 @@ const PARAMS = {
   });
 
   
-  const densInput = area.addInput(PARAMS, 'density', { min: 0, max: 1, step: 0.01 });
-  densInput.on('change', function (ev) {
-    density = parseFloat(ev.value.toFixed(2));
-  });
-  
-  
   const sprInput = area.addInput(PARAMS, 'spread', { min: 0, max: 3, step: 0.1 });
   sprInput.on('change', function (ev) {
     spread = parseFloat(ev.value.toFixed(2));
   });
+  
   
   
   const effects = pane.addFolder({
@@ -92,8 +87,9 @@ const PARAMS = {
     expanded: true
   });
   
-
-  const pInput = effects.addInput(PARAMS, 'pitch', { min: 0.01, max: 5, step: 0.01 });
+  
+  
+  const pInput = effects.addInput(PARAMS, 'pitch', { min: 0.01, max: 10, step: 0.01 });
   pInput.on('change', function (ev) {
     transpose = parseFloat(ev.value.toFixed(2));
   });
