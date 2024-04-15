@@ -66,14 +66,17 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    function bufferSwitch(input) {
     var getSound = new XMLHttpRequest();  // create a new xml http request
     ... // we are expecting an array buffer
-    
+
      if (input == 0) {
       // getSound.open(name of audio file);
      }
 
      getSound.onload = function () {
       // upon loading recording by xml http request, load buffer into web audio context buffer
+      ctx.decodeAudioData(getSound.response, function(buffer){...});
      }
+
+     getSound.send(); // send buffer response
    }
    ```
    3. call bufferswitch in setup() to initialize audiobuffer upon start up

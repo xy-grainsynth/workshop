@@ -26,7 +26,7 @@ SourceInput.on('change', function (ev) {
 function bufferSwitch(input) {
     var getSound = new XMLHttpRequest();
     getSound.responseType = "arraybuffer";
-    
+
     console.log("in buffer switch " + input);
     if (input == 0) {
         getSound.open("get", "recordings/riverwater.wav", true);
@@ -38,7 +38,6 @@ function bufferSwitch(input) {
     getSound.onload = function () {
         ctx.decodeAudioData(getSound.response, function (buffer) {
             audioBuffer = buffer;
-            console.log(audioBuffer.length);
         });
     };
     getSound.send();
