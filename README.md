@@ -141,8 +141,8 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    var voice = [];
    ```
  
- 9. add feedback delay effect to the grain
+ 9. optional: add feedback delay effect to the grain
 
-10. enhance the GUI to control the granular synth parameters
+10. optional: enhance the GUI to control the granular synth parameters
    - grain param monitors
 11. test/play with the built synth, and define a sound that associates with a climate condition using the GUI, defining associations with climate scenarios
