@@ -50,12 +50,13 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      }
      ```
 3. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
-4. setup a tweakpane GUI to load the recordings into the script
+   1. save the recordings in the folder recordings in the project directory
+5. setup a tweakpane GUI to load the recordings into the script
    1. create js/gui.js
    2. define tweakpane params and set up tweakpane gui
    3. connect tweakpane param source value to recording
    4. call buffer loading function bufferswitch()
-5. load recording into audio buffer
+6. load recording into audio buffer
    1. define audiobuffer in main.js
    2. write bufferswitch() buffer loading function
    3. test using the console  
