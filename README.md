@@ -33,6 +33,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
        ```
    5. declare audio context at the top of the main script
       ```
+      var ctx, master;
       ctx = new (window.AudioContext || window.webkitAudioContext);
       master = ctx.createGain();
       master.connect(ctx.destination);
