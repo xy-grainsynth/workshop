@@ -51,23 +51,40 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      ```
 3. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
    1. save at least two recordings in the folder recordings in the project directory
-5. setup a tweakpane GUI to load the recordings into the script
+4. setup a tweakpane GUI to load the recordings into the script
    1. create js/gui.js
    2. define tweakpane params and set up tweakpane gui
    3. connect tweakpane param source value to recording
    4. call buffer loading function bufferswitch()
-6. load recording into audio buffer
-   1. define audiobuffer in main.js
+5. load recording into audio buffer
+   1. define audiobuffer at the top of main.js
+   ```
+   var audiobuffer;
+   ```
    2. write bufferswitch() buffer loading function in gui.js
+   ```
+   function bufferSwitch(input) {
+    var getSound = new XMLHttpRequest();  // create a new xml http request
+    ... // we are expecting an array buffer
+    
+     if (input == 0) {
+      // getSound.open(name of audio file);
+     }
+
+     getSound.onload = function () {
+      // upon loading recording by xml http request, load buffer into web audio context buffer
+     }
+   }
+   ```
    3. call bufferswitch in setup() to initialize audiobuffer upon start up
    4. test using the GUI and the console  
-7. suspend audio context upon definition and add start/stop button to control audio context in the GUI
+6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
    2. in gui.js add start/stop button
-8. grains generator: how are the granulator work
+7. grains generator: how are the granulator work
    - example stub
    - continue adding one effect and exposing the value to test it 
-9. setting up a GUI to control the web audio context and expose the granular synth parameters
+8. setting up a GUI to control the web audio context and expose the granular synth parameters
    - tweakpane library
    - grain param monitors
-10. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
+9. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios

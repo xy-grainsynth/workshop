@@ -22,6 +22,9 @@ function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
     // tie the canvas to canvasContainer html node
     canvas.parent("canvasContainer");
+
+    // initialize audio buffer
+    bufferSwitch(0);
 }
 
 
@@ -34,7 +37,7 @@ function draw() {
     //limit drawing and sound generation to within canvas
    if (posX > 0 && posX < windowWidth && posY > 0 && posY < windowHeight) {
         if (mouseIsPressed) {
- 
+            //console.log(mouseX);
         }
    }
 }
@@ -44,3 +47,6 @@ function draw() {
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
+
+
+
