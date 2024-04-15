@@ -51,13 +51,21 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      ```
 3. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
 4. setup a tweakpane GUI to load the recordings into the script
-     1. create js/gui.js
-     2. 
-6. connection between web audio und canvas
-7. grains generator: how are the granulator work
+  1. create js/gui.js
+  2. define tweakpane params and set up tweakpane gui
+  3. connect tweakpane param source value to recording
+  4. call buffer loading function bufferswitch()
+5. load recording into audio buffer
+  1. define audiobuffer in main.js
+  2. write bufferswitch() buffer loading function
+  3. test using the console  
+7. suspend audio context upon definition and add start/stop button to control audio context in the GUI
+  1. in main.js suspend audio context after initialization
+  2. in gui.js add start/stop button
+8. grains generator: how are the granulator work
    - example stub
    - continue adding one effect and exposing the value to test it 
-8. setting up a GUI to control the web audio context and expose the granular synth parameters
+9. setting up a GUI to control the web audio context and expose the granular synth parameters
    - tweakpane library
    - grain param monitors
-9. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
+10. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
