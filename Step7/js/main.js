@@ -213,6 +213,7 @@ function graingenerator(positionx, positiony) {
         this.grain.connect(this.contour);
     }
     
+    
     // add a feedback delay to the grain
     this.delay = ctx.createDelay();
     this.delay.delayTime.value = delay;
@@ -256,6 +257,7 @@ function graingenerator(positionx, positiony) {
 
     //garbage collection
     this.grain.stop(ctx.currentTime + attack + release + 0.1);
+    
     var tms = (attack + release) * 1000; //calculate the time in miliseconds
     setTimeout(function () {
         that.contour.disconnect();
