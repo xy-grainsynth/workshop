@@ -28,16 +28,26 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      canvas = createCanvas(windowWidth, windowHeight);
      ```
    4. in setup() tie the canvas to canvasContainer html node
-       ```
-       canvas.parent("canvasContainer");
-       ```
-   5. declare audio context at the top of the main script
-      ```
-      var ctx, master;
-      ctx = new (window.AudioContext || window.webkitAudioContext);
-      master = ctx.createGain();
-      master.connect(ctx.destination);
-      ```
+     ```
+     canvas.parent("canvasContainer");
+     ```
+   6. declare audio context at the top of the main script
+     ```
+     var ctx, master;
+     ctx = new (window.AudioContext || window.webkitAudioContext);
+     master = ctx.createGain();
+     master.connect(ctx.destination);
+     ```
+   6. in draw() fetch mouse position and define when sound generation is triggered
+     ```
+     posX = mouseX;
+     posY = mouseY;
+     if (posX > 0 && posX < windowWidth && posY > 0 && posY < windowHeight) {
+        if (mouseIsPressed) {
+     
+        }
+     }
+     ```
    - p5 sketch stub and web audio context definition
 5. defining/setting gain, connecting to master output
 6. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
