@@ -124,10 +124,10 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    ```
    6. the offset is obtained from x mouse position, random offset is obtained based on spread
    7. add panner node
-   8. amplitude is based on x mouse position
-   9. garbage collection: dispose of panner node and gain contour
+   8. amplitude is based on y mouse position
+   9. garbage collection: dispose of panner node and the gain envelope
    10. add feedback delay effect to the grain
 8. enhance the GUI to control the granular synth parameters
    - tweakpane library
    - grain param monitors
-9. test/play with the built synth, and define a sound that associates with a climate condition, defining associations with climate scenarios
+9. test/play with the built synth, and define a sound that associates with a climate condition using the GUI, defining associations with climate scenarios
