@@ -49,7 +49,6 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
         }
      }
      ```
-3. defining/setting gain, connecting to master output
 4. sourcing own recordings .wav format max. duration 1 minute (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
 5. sounds laden/defining and loading buffers
 6. connection between web audio und canvas
