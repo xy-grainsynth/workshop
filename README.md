@@ -72,14 +72,16 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
      }
 
      getSound.onload = function () {
-      // upon loading recording by xml http request, load buffer into web audio context buffer
-      ctx.decodeAudioData(getSound.response, function(buffer){...});
+      // upon loading recording by xml http request, load xml http response buffer as web audio context buffer
+      ctx.decodeAudioData(getSound.response, function(buffer){
+        ... // load buffer into web audio context buffer
+        });
      }
 
      getSound.send(); // send buffer response
    }
    ```
-   3. call bufferswitch in setup() to initialize audiobuffer upon start up
+   3. call bufferswitch in setup() in main.js to initialize audiobuffer upon start up
    4. test using the GUI and the console  
 6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
