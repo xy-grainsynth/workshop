@@ -101,7 +101,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    }
    
    ```
-  2. generate grains at mouse position x,y
+   2. generate grains at mouse position x,y
    ```
    function graingenerator(positionX, positionY){
       this.grain = ctx.createBufferSource();
