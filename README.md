@@ -30,6 +30,7 @@ Link to workshop github repository https://github.com/xy-grainsynth/workshop
      }
      ```
      setup() is called to initialize the p5 sketch, draw() is called at every frame
+      in index.html define  <script src="js/main.js" under canvasContainer
    3. in setup() create a p5 canvas the same size as the browser window
      ```
      canvas = createCanvas(windowWidth, windowHeight);
@@ -55,14 +56,14 @@ Link to workshop github repository https://github.com/xy-grainsynth/workshop
         }
      }
      ```
-3. sourcing own recordings .wav format max. duration up to 2 minutes (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
+4. sourcing own recordings .wav format max. duration up to 2 minutes (think of a sound that would be interesting to use for transitions from natural to extreme/unfamiliar state) Search on [BBC Sound Effects](https://sound-effects.bbcrewind.co.uk/search?q=nature&resultSize=30) or other open-access libraries
    1. save at least two recordings in the folder recordings in the project directory
-4. setup a tweakpane GUI to load the recordings into the script
+5. setup a tweakpane GUI to load the recordings into the script
    1. create js/gui.js
    2. define tweakpane params and set up tweakpane gui
    3. connect tweakpane param source value to recording
    4. call buffer loading function bufferswitch()
-5. load recording into audio buffer
+6. load recording into audio buffer
    1. define audiobuffer at the top of main.js
    ```
    var audiobuffer;
@@ -89,10 +90,10 @@ Link to workshop github repository https://github.com/xy-grainsynth/workshop
    ```
    3. call bufferswitch after web audio context initialization in main.js to initialize audiobuffer upon start up
    4. test using the GUI and the console  
-6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
+7. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
    2. in gui.js add tweakpane button to suspend and resume the web audio context
-7. grain generator (Step7.1)
+8. grain generator (Step7.1)
    1. grains are generated when the mouse is pressed on the canvas
    ```
    function draw(){
@@ -128,12 +129,12 @@ Link to workshop github repository https://github.com/xy-grainsynth/workshop
    5. amplitude is based on y mouse position
    6. garbage collection: dispose of gain envelope
    7. add the grain synth params in the GUI to make them adjustible (Step7.2)
-8. add density
+9. add density
    1. we want to spawn grains based in an adjustable interval
    2. we want to keep track of the generated grains in order to dispose of them when the interaction seizes
    3. we set up an additional function/class voice() to play grains at a specific mouse position in an interval defined by the density parameter
- 9. optional: add feedback delay effect to the grain
+ 10. optional: add feedback delay effect to the grain
 
-10. optional: enhance the GUI to control the granular synth parameters
+11. optional: enhance the GUI to control the granular synth parameters
    - grain param monitors
 11. test/play with the built synth, and define a sound that associates with a climate condition using the GUI, defining associations with climate scenarios
