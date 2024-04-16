@@ -1,14 +1,15 @@
-Web audio api is a modular kind of system to work with sound in the browser and allows to process audio but also to build own synthesizers.<br>
+[Web audio api](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) is a modular kind of system to work with sound in the browser and allows to process audio but also to build own synthesizers.<br>
 <br>
 The api works via the web audio context which has to be declared and instantiated, and everything happens as part of this audio context, providing functionality to work with sound files. <br>
 <br>
 The api consists of different nodes that represent audio processing algorithms or functions or properties, and can be put together via the method connect.<br>
 <br>
 So it is a bit like when putting together a sound or modular and audio equipment setup, the effects are plugged onto a sampler, the sampler is pluged onto a main out speakers etc.<br>
+![Web Audio API](audio-context_.png)
 <br>
 The low level sound processing capabilities allow to write all parts by oneself.<br>
 <br>
-On the other hand p5 is a creative coding library, stemming from the processing framework, but more focused on interactivity, and visual rendering in the 2d (and 3d) environment.<br>
+On the other hand [p5 js](https://p5js.org/) is a creative coding library, stemming from the processing framework, but more focused on interactivity, and visual rendering in the 2d (and 3d) environment.<br>
 <br>
 The rendered visual information can be interacted with using sound and mouse or touch input.<br>
 <br>
