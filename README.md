@@ -4,7 +4,7 @@ Bela Usabaev, speech synthesis, media art, web-based applications
 Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, interactive applications, sound and climate change
 
 ## Introduction to the workshop
-- What is Web Audio?
+- [What is Web Audio](https://github.com/xy-grainsynth/workshop/blob/893ba230a7346ed2d33e44b6e33d31918a65be9f/workshop%20intro.md)?
 - ClimaSynth web application - a case study
 - Hands-on experimentation with ClimaSynth and testing: https://ctechfilmuniversity.github.io/project_ClimaSynth/
 
