@@ -14,7 +14,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 0. install the Live Server extension in VS Studio Code
 1. create index.html, load p5 and tweakpane library, add css stylesheet, test in VS studio code, check for errors using the console output [Step 1](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)
 2. set up p5 sketch and web audio
-   1. create js/Step2/main.js file in VS Studio Code
+   1. create js/main.js file in VS Studio Code
    2. in main.js create p5 sketch with setup() and draw()
      ```
      function setup() {
