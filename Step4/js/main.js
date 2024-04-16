@@ -14,6 +14,8 @@ master = ctx.createGain();
 master.connect(ctx.destination);
 
 
+// initialize audio buffer
+bufferSwitch(0);
 
 
 function setup() {
@@ -23,8 +25,6 @@ function setup() {
     // tie the canvas to canvasContainer html node
     canvas.parent("canvasContainer");
 
-    // initialize audio buffer
-    bufferSwitch(0);
 }
 
 
@@ -35,11 +35,11 @@ function draw() {
 
 
     //limit drawing and sound generation to within canvas
-   if (posX > 0 && posX < windowWidth && posY > 0 && posY < windowHeight) {
+    if (posX > 0 && posX < windowWidth && posY > 0 && posY < windowHeight) {
         if (mouseIsPressed) {
             //console.log(mouseX);
         }
-   }
+    }
 }
 
 

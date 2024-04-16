@@ -2,13 +2,8 @@
 var audioBuffer;
 
 var posX, posY;
-var h, w;
 
 var voicesmono = []; //this will be used for mouse events
-
-var bg = [];
-var dots = []
-var points = [];
 
 
 //declare audio context

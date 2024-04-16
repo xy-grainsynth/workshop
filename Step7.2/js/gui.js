@@ -66,7 +66,6 @@ const PARAMS = {
   const attInput = area.addInput(PARAMS, 'attack', { min: 0.01, max: 1.0, step: 0.01 });
   attInput.on('change', function (ev) {
     attack = parseFloat(ev.value.toFixed(2));
-    console.log(" att in gui " + att);
   });
   
   const decInput = area.addInput(PARAMS, 'release', { min: 0.01, max: 1.0, step: 0.01 });

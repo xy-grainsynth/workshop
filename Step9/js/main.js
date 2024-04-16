@@ -128,18 +128,18 @@ function graingenerator_main(positionx, positiony) {
     var del  = ctx.createDelay();
     del.delayTime.value = delay;
 
+    grain.connect(del);
+
     var feedb = ctx.createGain();
     feedb.gain.value = feedback;
 
     del.connect(feedb);
     feedb.connect(del);
-    contour.connect(feedb);
-    grain.connect(feedb);
-
-    contour.connect(master);
+    del.connect(master);
 
     grain.connect(contour);
-
+    contour.connect(master);
+    
     //update the position and calcuate the offset
     var len = grain.buffer.duration;
     var offset = len * (positionx / windowWidth); //pixels to seconds
