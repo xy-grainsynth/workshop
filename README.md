@@ -30,7 +30,6 @@ Link to workshop github repository https://github.com/xy-grainsynth/workshop
      }
      ```
      setup() is called to initialize the p5 sketch, draw() is called at every frame
-      in index.html define  <script src="js/main.js" under canvasContainer
    3. in setup() create a p5 canvas the same size as the browser window
      ```
      canvas = createCanvas(windowWidth, windowHeight);
