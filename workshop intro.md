@@ -5,7 +5,7 @@ The api works via the web audio context which has to be declared and instantiate
 The api consists of different nodes that represent audio processing algorithms or functions or properties, and can be put together via the method connect.<br>
 <br>
 So it is a bit like when putting together a sound or modular and audio equipment setup, the effects are plugged onto a sampler, the sampler is pluged onto a main out speakers etc.<br>
-![Web Audio API](audio-context_.png)
+![Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/audio-context_.png)
 <br>
 The low level sound processing capabilities allow to write all parts by oneself.<br>
 <br>
