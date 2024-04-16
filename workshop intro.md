@@ -21,4 +21,4 @@ We will implement a granular synthesizer using web audio and use it as part of a
 <br>
 [Granular synthesis](https://www.soundonsound.com/techniques/granular-synthesis)  is a sound processing algorithm where a sample recording is processed by splitting it up into small chunks, and resynthesizing the chunks in different ways according to different grain synth parameters. Especially granular synthesis is the idea of time stretching a sample without changing the pitch, or pitch shifting a recording without changing the length of the sample. [explanation from izotope with sound examples](https://www.izotope.com/en/learn/the-basics-of-granular-synthesis.html)<br>
 <br>
-We will implement the basic functionality of grain synthesis based on individually chosen sound samples.
+We will implement the basic functionality of grain synthesis based on individually chosen sound recordings.
