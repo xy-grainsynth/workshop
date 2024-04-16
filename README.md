@@ -1,7 +1,7 @@
 # CX Class 16.04.2024 "Experiments with Web-based Audio"
 Bela Usabaev, speech synthesis, media art, web-based applications
 
-Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, interactive applications, sound and climate change
+Dr. Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, interactive applications, sound and climate change
 
 ## Introduction to the workshop
 - [What is Web Audio](workshop%20intro.md)?
