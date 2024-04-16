@@ -13,7 +13,7 @@ On the other hand [p5 js](https://p5js.org/) is a creative coding library, stemm
 <br>
 The rendered visual information can be interacted with using sound and mouse or touch input.<br>
 <br>
-P5 works with the [<canvas>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) HTML element and provides built-in interactive functionality.<br>
+P5 works with the [\<canvas\>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) HTML element and provides built-in interactive functionality.<br>
 <br>
 Since the web audio api and p5 js both exist in the browser and are based on Javascript, they are part of the same ecosystem and can be used together.<br>
 <br>
