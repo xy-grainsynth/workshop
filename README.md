@@ -125,7 +125,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    6. garbage collection: dispose of gain envelope
    7. add the grain synth params in the GUI to make them adjustible
 8. add density
-   1. we want to spawn grains based on an adjustable interval
+   1. we want to spawn grains based in an adjustable interval
    2. we want to keep track of the generated grains in order to dispose of them when the interaction seizes
    3. we set up an additional function/class voice() to play grains at a specific mouse position in an interval defined by the density parameter
  9. optional: add feedback delay effect to the grain
