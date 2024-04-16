@@ -9,11 +9,11 @@ So it is a bit like when putting together a sound or modular and audio equipment
 <br>
 The low level sound processing capabilities allow to write all parts by oneself.<br>
 <br>
-On the other hand [p5 js](https://p5js.org/) is a creative coding library, stemming from the processing framework, but more focused on interactivity, and visual rendering in the 2d (and 3d) environment.<br>
+On the other hand [p5 js](https://p5js.org/) is a creative coding library, stemming from the processing framework, but more focused on interactivity, and visual rendering in the 2d (and 3d) environment, also including the [WebGL rendering](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API).<br>
 <br>
 The rendered visual information can be interacted with using sound and mouse or touch input.<br>
 <br>
-P5 provides built-in functionality for this.<br>
+P5 works with the [<canvas>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) HTML element and provides built-in interactive functionality.<br>
 <br>
 Since the web audio api and p5 js both exist in the browser and are based on Javascript, they are part of the same ecosystem and can be used together.<br>
 <br>
