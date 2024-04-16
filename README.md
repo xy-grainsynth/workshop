@@ -7,8 +7,7 @@ Dr. Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art,
 - [What is Web Audio](workshop%20intro.md)?
 - ClimaSynth web application - a case study
 - Hands-on experimentation with ClimaSynth and testing: https://ctechfilmuniversity.github.io/project_ClimaSynth/
-
-<img src="https://github.com/xy-grainsynth/xy-prototype/assets/115570643/34b7190e-8a4f-4ede-9a6f-cfd78e3b5bac"  width="200" height="200">
+- If you wish to evaluate the app, we would very much appreciate your feedback: https://docs.google.com/forms/d/1e9ItYTxYFPESisSUwFXnlf-B47PTELjqYhXO3_2Pxew/edit
 
 ## Practical session: creating a mini web synth
 
