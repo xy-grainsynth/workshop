@@ -88,7 +88,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 6. suspend audio context upon definition and add start/stop button to control audio context in the GUI
    1. in main.js suspend audio context after initialization
    2. in gui.js add tweakpane button to suspend and resume the web audio context
-7. grain generator
+7. grain generator (Step7.1)
    1. grains are generated when the mouse is pressed on the canvas
    ```
    function draw(){
@@ -123,7 +123,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    4. the offset is obtained from x mouse position, random offset is obtained based on spread
    5. amplitude is based on y mouse position
    6. garbage collection: dispose of gain envelope
-   7. add the grain synth params in the GUI to make them adjustible
+   7. add the grain synth params in the GUI to make them adjustible (Step7.2)
 8. add density
    1. we want to spawn grains based in an adjustable interval
    2. we want to keep track of the generated grains in order to dispose of them when the interaction seizes
