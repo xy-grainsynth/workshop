@@ -1,0 +1,23 @@
+Web audio api is a modular kind of system to work with sound in the browser and allows to process audio but also to build own synthesizers.
+
+The api works via the web audio context which has to be declared and instantiated, and everything happens as part of this audio context, providing functionality to work with sound files. 
+
+The api consists of different nodes that represent audio processing algorithms or functions or properties, and can be put together via the method connect.
+
+So it is a bit like when putting together a sound or modular and audio equipment setup, the effects are plugged onto a sampler, the sampler is pluged onto a main out speakers etc.
+
+The low level sound processing capabilities allow to write all parts by oneself.
+
+On the other hand p5 is a creative coding library, stemming from the processing framework, but more focused on interactivity, and visual rendering in the 2d (and 3d) environment.
+
+The rendered visual information can be interacted with using sound and mouse or touch input.
+
+P5 provides built-in functionality for this.
+
+Since the web audio api and p5 js both exist in the browser and are based on Javascript, they are part of the same ecosystem and can be used together.
+
+We will implement a granular synthesizer using web audio and use it as part of a blank p5 canvas. We will control the synth via a Gui, to make adjustments to the sound and effectively build a small digital sound instrument.
+
+Granular synthesis is a sound processing algorithm where a sample recording is processed by splitting it up into small chunks, and resynthesizing the chunks in different ways according to different grain synth parameters. Especially granular synthesis is the idea of time stretching a sample without changing the pitch, or pitch shifting a recording without changing the length of the sample.
+
+We will implement the basic functionality of grain synthesis based on individually chosen sound samples. 

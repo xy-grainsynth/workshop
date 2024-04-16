@@ -11,6 +11,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 <img src="https://github.com/xy-grainsynth/xy-prototype/assets/115570643/34b7190e-8a4f-4ede-9a6f-cfd78e3b5bac"  width="200" height="200">
 
 ## Practical session: creating a mini web synth
+0. install the Live Server extension in VS Studio Code
 1. create index.html, load p5 and tweakpane library, add css stylesheet, test in VS studio code, check for errors using the console output [Step 1](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)
 2. set up p5 sketch and web audio
    1. create js/Step2/main.js file in VS Studio Code
@@ -124,23 +125,9 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
    6. garbage collection: dispose of gain envelope
    7. add the grain synth params in the GUI to make them adjustible
 8. add density
-   1. grains are generated when the mouse is pressed
-   ```
-   function mousePressed(){
-      ... // start generating grains
-   }
-   ```
-   2. dispose of the generated grains when the mouse is released
-   ```
-   function mouseReleased(){
-      ... // delete the grains generated sind the mouse got pressed
-   }
-   ```
-   3. array to hold the generated grains
-   ```
-   var voice = [];
-   ```
- 
+   1. we want to spawn grains based on an adjustable interval
+   2. we want to keep track of the generated grains in order to dispose of them when the interaction seizes
+   3. we set up an additional function/class voice() to play grains at a specific mouse position in an interval defined by the density parameter
  9. optional: add feedback delay effect to the grain
 
 10. optional: enhance the GUI to control the granular synth parameters
