@@ -17,7 +17,7 @@ P5 works with the [\<canvas\>](https://developer.mozilla.org/en-US/docs/Web/HTML
 <br>
 Since the web audio api and p5 js both exist in the browser and are based on Javascript, they are part of the same ecosystem and can be used together.<br>
 <br>
-We will implement a granular synthesizer using web audio and use it as part of a blank p5 canvas. We will control the synth via a Gui, to make adjustments to the sound and effectively build a small digital sound instrument.<br>
+We will implement a granular synthesizer using web audio and use it as part of a blank p5 canvas. We will control the synth via a Gui, implemented using the [TweakPane](https://tweakpane.github.io/docs/v3/) Javascript library, to make adjustments to the sound and effectively build a small digital sound instrument.<br>
 <br>
 Granular synthesis is a sound processing algorithm where a sample recording is processed by splitting it up into small chunks, and resynthesizing the chunks in different ways according to different grain synth parameters. Especially granular synthesis is the idea of time stretching a sample without changing the pitch, or pitch shifting a recording without changing the length of the sample.<br>
 <br>
