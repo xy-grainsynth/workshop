@@ -12,7 +12,7 @@ Eleni-Ira Panourgia, Postdoctoral Researcher, sound and visual art, web art, int
 
 ## Practical session: creating a mini web synth
 0. install the Live Server extension in VS Studio Code
-1. download [initial project](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)(Link to github repository https://github.com/xy-grainsynth/workshop) as zip file and open in VS Studio Code, test in VS studio code, check for errors using the console output
+1. download [initial project](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)(Link to github repository https://github.com/xy-grainsynth/workshop) as zip file and open in VS Studio Code, test in VS studio code, check for errors using the console output [Step1](https://github.com/xy-grainsynth/workshop/tree/3e2b8b6582ee4d3fdd18285555bde1f1e51077b2)
 2. set up p5 sketch and web audio
    1. create js/main.js file in VS Studio Code
    2. in main.js create p5 sketch with setup() and draw()
